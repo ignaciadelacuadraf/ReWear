@@ -1,0 +1,79 @@
+/*
+ * ========================================
+ * Estilos para el componente HeroCarousel
+ * ========================================
+ */
+
+/* Contenedor principal del Hero */
+.hero.fullbleed {
+    /* Define la altura mínima para que la imagen se muestre */
+    min-height: 550px; /* Ajusta este valor según el diseño deseado */
+    width: 100%;
+    /* Posicionamiento para que el overlay se superponga */
+    position: relative; 
+    /* Opcional: asegura que el contenido no se desborde */
+    overflow: hidden; 
+}
+
+/* Imagen de fondo (la que rota) */
+.hero__img {
+    width: 100%;
+    height: 100%;
+    /* Asegura que la imagen cubra todo el contenedor sin distorsión */
+    object-fit: cover; 
+    /* Coloca la imagen en el fondo */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Bajo el overlay */
+    
+    /* Animación de transición Opcional: para suavizar el cambio de imagen */
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Capa de superposición para mejorar la legibilidad del texto */
+.hero__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Fondo semi-transparente (ejemplo: negro al 40%) */
+    background-color: rgba(0, 0, 0, 0.4); 
+    z-index: 2; /* Sobre la imagen */
+    
+    /* Centra el contenido */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Contenedor del texto y logo */
+.hero__content {
+    /* Limita el ancho del contenido para mejor lectura */
+    max-width: 600px; 
+    padding: 20px;
+    color: white; /* Asegura que el texto sea legible sobre el fondo oscuro */
+}
+
+.hero__logo {
+    max-width: 250px;
+    margin-bottom: 20px;
+}
+
+.hero__text {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+/* Media Query para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .hero.fullbleed {
+        min-height: 400px; 
+    }
+    .hero__text {
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,23 @@
+/* App.css debe contener solo estilos propios del componente App.
+   Los tokens, reset, tema y fuente ya están en index.css. */
+
+/* Asegura que el root ocupe toda la pantalla */
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* Si tu App envuelve las páginas en un contenedor,
+   úsalo para el espacio bajo el navbar (redundante pero seguro). */
+.app-content {
+  padding-top: var(--rw-nav-h);
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Si usas <main/> dentro de App, refuerza el padding-top (fallback) */
+main {
+  padding-top: var(--rw-nav-h);
+  min-height: 100vh; /* evita recortes si no hay suficiente contenido */
+}

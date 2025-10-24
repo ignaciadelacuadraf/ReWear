@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Francois+One&display=swap');
+
+/* ===========================
+   Tokens de tema (global)
+   =========================== */
+
+/* Claro por defecto */
+:root {
+  /* Tipografía */
+  font-family: 'Francois One', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  /* Altura del navbar (ajusta si cambia) */
+  --rw-nav-h: 84px;
+
+  /* Colores semánticos */
+  --bg: #ffffff;
+  --text: #213547;
+  --primary: #3a98a0;            /* tu teal recomendado */
+
+  /* Accesibilidad/foco */
+  --ring: 0 0 0 3px rgba(58,152,160,.28);
+
+  color-scheme: light;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Oscuro (fondo gris) */
+html[data-theme="dark"] {
+  --bg: #2b2b2b;
+  --text: rgba(255, 255, 255, 0.87);
+  --primary: #56b6bd;
+
+  color-scheme: dark;
+}
+
+/* ===========================
+   Base
+   =========================== */
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  display: block;                     /* evitar el centering del template de Vite */
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Francois One', sans-serif;
+  transition: background-color .25s ease, color .25s ease;
+}
+
+/* Espacio global bajo navbar fijo (aplica a cualquier layout) */
+.app-content,
+main {
+  padding-top: var(--rw-nav-h);
+  box-sizing: border-box;
+  min-height: 100vh;                  /* opcional: asegura altura de página */
+}
+
+/* Enlaces */
+a {
+  font-weight: 500;
+  color: var(--primary);
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+/* Títulos */
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  font-family: inherit;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--primary);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.1s ease, opacity 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,.05);
+}
+
+/* Oscurece ligeramente al pasar el cursor */
+button:hover {
+  background-color: color-mix(in srgb, var(--primary) 85%, #000);
+  transform: translateY(-1px);
+}
+
+/* Al hacer clic baja un poquito */
+button:active {
+  transform: scale(0.98);
+}
+
+/* Elimina delineado azul de navegador */
+button:focus,
+button:focus-visible {
+  outline: none;
+  box-shadow: none;
+}

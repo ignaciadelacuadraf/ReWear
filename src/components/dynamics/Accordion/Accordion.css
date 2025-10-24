@@ -1,0 +1,45 @@
+.acc-root { display: grid; gap: 10px; }
+
+.acc-item {
+  border: 1px solid color-mix(in srgb, var(--accent, #1e9e8a) 16%, #cfd8d6 84%);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--panel, #eaf6f3) 88%, white 12%);
+  overflow: clip;
+  transition: box-shadow .25s ease, border-color .25s ease, background .25s ease;
+}
+.acc-item.is-open {
+  box-shadow: 0 10px 32px rgba(15,23,42,.08);
+  border-color: color-mix(in srgb, var(--accent, #1e9e8a) 28%, #cfd8d6 72%);
+}
+
+/* Trigger “Ver más” */
+.acc-trigger {
+  width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 14px;
+  border: 0; cursor: pointer; text-align: left; outline: none;
+
+  font: 800 14px/1.25 "Inter", ui-sans-serif;
+  color: #0f172a;
+
+  background: color-mix(in srgb, var(--panel, #eaf6f3) 70%, black 14%);
+  border-radius: 10px;
+  margin: 10px;
+  transition: background .2s ease, color .2s ease, transform .12s ease;
+}
+.acc-trigger:hover {
+  background: color-mix(in srgb, var(--accent, #1e9e8a) 26%, black 6%);
+  color: white;
+  transform: translateY(1px);
+}
+.acc-icon { display: none; }
+
+.acc-panel[hidden] { display: none; }
+.acc-panel__inner {
+  padding: 0 16px 14px;
+  animation: accIn .22s ease both;
+}
+@keyframes accIn { from {opacity: 0; transform: translateY(4px)} to {opacity: 1; transform: none} }
+
+.acc-panel__inner p, .acc-panel__inner ol { margin: 8px 0; }
+.acc-panel__inner ol { padding-left: 18px; line-height: 1.6; }

@@ -1,0 +1,197 @@
+/* ===========================
+   FUENTE GLOBAL
+   =========================== */
+@import url('https://fonts.googleapis.com/css2?family=Francois+One&display=swap');
+
+/* ===========================
+   VARIABLES BASE + TEMA LIGHT
+   =========================== */
+:root {
+  --ff-brand: 'Francois One', system-ui, -apple-system, Arial, sans-serif;
+
+  /* Layout */
+  --container: 1480px;
+  --side-pad: 32px;
+
+  /* Colores (light) */
+  --bg: #ffffff;            /* fondo app */
+  --text: #222222;          /* texto base */
+  --card: #ffffff;          /* tarjetas */
+  --border: #e5e7eb;
+  --hero-overlay: rgba(0,0,0,0.75); /* overlay hero */
+
+  /* Otros */
+  --overlay-d1: rgba(0,0,0,.25);
+  --overlay-d2: rgba(0,0,0,.55);
+  --shadow: 0 12px 32px rgba(0,0,0,.12);
+  --radius: 18px;
+  --radius-lg: 22px;
+
+  --transition-theme: background-color .25s ease, color .25s ease, border-color .25s ease;
+  color-scheme: light;
+}
+
+/* ===========================
+   TEMA OSCURO (fondo gris)
+   =========================== */
+html[data-theme="dark"] {
+  --bg: #2b2b2b;            /* gris oscuro para fondo */
+  --text: #eaeaea;
+  --card: #1f1f1f;
+  --border: #2a2a2a;
+  --hero-overlay: rgba(0,0,0,0.75); /* puedes hacerla más clara si quieres */
+
+  color-scheme: dark;
+}
+
+/* ===========================
+   BASE TIPOGRÁFICA / LAYOUT
+   =========================== */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--ff-brand);
+  background: var(--bg);     /* <- usa token de tema */
+  color: var(--text);
+  transition: var(--transition-theme);
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  display: block;
+}
+
+/* Contenedor estándar */
+.container {
+  width: min(var(--container), 100%);
+  margin-inline: auto;
+  padding-inline: var(--side-pad);
+}
+
+/* ==== FULL-BLEED utility ==== */
+.fullbleed {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding-inline: 0;
+}
+.fullbleed + .fullbleed { margin-top: 40px; }
+
+/* ===========================
+   HERO
+   =========================== */
+.hero {
+  position: relative;
+  height: clamp(300px, 42vw, 560px);
+  overflow: hidden;
+  margin-bottom: 80px;
+}
+
+.hero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 0 16px;
+  background:
+    linear-gradient(var(--hero-overlay), var(--hero-overlay)),
+    url("/fondo.jpg") center/cover no-repeat;
+}
+
+.hero__content {
+  width: min(600px, 92%);
+  text-align: center;
+  color: #fff;
+}
+
+.hero__logo {
+  width: 200px;
+  height: auto;
+  margin: 0 auto 50px;
+  display: block;
+}
+
+.hero__text {
+  margin: 0 0 16px;
+  font-size: clamp(15px, 1.8vw, 20px);
+  line-height: 1.5;
+  text-shadow: 0 2px 8px rgba(0,0,0,.35);
+}
+
+/* ===========================
+   TITULARES
+   =========================== */
+.section-heading {
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: .3px;
+  margin: 100px 0 40px;
+  text-align: center;
+  color: var(--text);
+}
+
+@media (min-width: 900px) {
+  .section-heading {
+    text-align: center;
+    padding-inline: var(--side-pad);
+  }
+}
+
+.mt-lg { margin-top: 200px; margin-bottom: 80px; }
+
+/* Título + línea divisoria (Mujer/Hombre) */
+.section-split {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 80px;
+  margin-bottom: 20px;
+  padding-inline: var(--side-pad);
+}
+
+.split-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.split-line {
+  flex: 1;
+  height: 2px;
+  background: var(--text);
+  opacity: .35;
+  border-radius: 2px;
+}
+
+/* ===========================
+   GRIDS
+   =========================== */
+.category-grid,
+.products-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-bottom: 60px;
+  padding-inline: var(--side-pad);
+}
+
+@media (min-width: 900px) {
+  .category-grid,
+  .products-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

@@ -1,0 +1,87 @@
+:root{
+  --teal: var(--teal, #3a98a0);
+  --ink: #1d1d1f;
+  --muted: #6b7280;
+  --white: #fff;
+  --danger: #e11d48;
+  --shadow: 0 18px 48px rgba(0,0,0,.18);
+  --ring: 0 0 0 3px rgba(58,152,160,.18);
+  --radius: 16px;
+  --radius-lg: 20px;
+  --nav-h: var(--nav-h, 80px);
+  --font-heading: "Francois One", system-ui, -apple-system, Arial, sans-serif;
+}
+
+/* pantalla teal detrás */
+.auth-screen{ min-height: calc(100vh - var(--nav-h)); background: var(--teal); display:grid; place-items:center; padding:32px 16px 48px; }
+
+/* tarjeta */
+.auth-card{ width:min(560px,92%); background:#fff; border-radius:var(--radius-lg); box-shadow:var(--shadow); padding:32px 28px 26px; margin-top:150px; }
+
+/* título */
+.auth-title{ margin:0 0 18px; font-family:var(--font-heading); font-size:28px; letter-spacing:.2px; color:var(--ink); text-align:center; }
+
+/* formulario */
+.auth-form{ display:grid; gap:12px; }
+.auth-label{ font-weight:700; font-family:var(--font-heading); letter-spacing:.3px; }
+
+.auth-input{
+  width:100%; height:48px; border-radius:var(--radius);
+  border:1.5px solid #d1d5db; padding:0 14px; font-size:15px;
+  transition:border-color .2s, box-shadow .2s, background-color .2s; background:#f9fafb;
+}
+.auth-input:focus{ border-color:#3a98a0; box-shadow:var(--ring); outline:none; background:#fff; }
+.auth-input.is-invalid{ border-color:var(--danger); background:#fff; }
+.auth-error{ margin:4px 0 6px; color:var(--danger); font-size:13px; }
+
+/* password con botón mostrar/ocultar */
+.password-field{ position:relative; }
+.toggle-pass{
+  position:absolute; right:10px; top:50%; transform:translateY(-50%);
+  background:transparent; border:0; color:#3a98a0; cursor:pointer;
+  padding:6px 8px; border-radius:10px;
+}
+.toggle-pass:hover{ background:rgba(58,152,160,.08); }
+
+/* fila inferior del form */
+.auth-row{ display:flex; align-items:center; gap:10px; margin-top:2px; }
+.auth-row.between{ justify-content:space-between; }
+.remember{ display:flex; align-items:center; gap:8px; color:#333; font-size:14px; }
+
+.auth-link{ color:#3a98a0; text-decoration:underline; text-underline-offset:2px; font-size:14px; }
+.auth-link:hover{ opacity:.85; }
+.auth-link.strong{ font-weight:800; }
+
+/* botón principal */
+.auth-submit{
+  margin-top:10px; height:52px; width:100%; border:0; border-radius:var(--radius);
+  background:#3a98a0; color:#fff; font-family:var(--font-heading); font-size:18px; letter-spacing:.3px;
+  cursor:pointer; transition:transform .05s, filter .2s, box-shadow .2s, opacity .2s;
+  box-shadow:0 10px 24px rgba(58,152,160,.28);
+}
+.auth-submit:hover{ filter:brightness(.96); }
+.auth-submit:active{ transform:translateY(1px); }
+.auth-submit[disabled]{ opacity:.65; cursor:not-allowed; }
+
+/* texto inferior */
+.auth-bottom{ margin:22px 0 2px; text-align:center; color:var(--muted); font-size:14px; }
+
+/* --- NUEVO: contenedor de campo para controlar separaciones internas --- */
+.auth-field{
+  display:grid;
+  gap:6px;                 /* espacio entre label / input / error */
+}
+
+/* --- AJUSTE: añade padding interno al formulario --- */
+.auth-form{
+  display:grid;
+  gap:14px;                /* separación entre bloques de campos */
+  padding: 8px 10px 12px;  /* ← margen interno del formulario */
+}
+
+/* (opcional) un poco más de aire arriba del primer label */
+.auth-label{ 
+  font-weight:700; 
+  font-family:var(--font-heading); 
+  letter-spacing:.3px; 
+}

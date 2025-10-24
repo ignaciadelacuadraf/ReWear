@@ -1,0 +1,60 @@
+/* Tarjeta de producto: colores estables (no dependen del tema) */
+.tarjeta-producto{
+  display:block;
+  overflow:hidden;
+  border-radius:18px;
+  background:#ffffff;              /* ← fija blanco */
+  text-decoration:none;
+  color:#222222;                   /* ← no heredes del body */
+  box-shadow: 0 6px 18px rgba(0,0,0,.12);
+  transition: transform var(--transition, .3s ease), box-shadow var(--transition, .3s ease);
+  will-change: transform;
+}
+
+.tarjeta-producto:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,.16);
+}
+
+.tarjeta-producto__img{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+  display:block;
+  transition: transform var(--transition, .3s ease), filter var(--transition, .3s ease);
+}
+
+.tarjeta-producto:hover .tarjeta-producto__img{
+  transform: scale(1.03);
+  filter: saturate(1.03);
+}
+
+.tarjeta-producto__body{
+  padding:12px 14px 14px;
+  background:#ffffff;              /* ← estable */
+  color:#222222;                   /* ← estable */
+}
+
+.tarjeta-producto__name{
+  font-family:"Francois One", sans-serif;
+  font-size:16px;
+  font-weight:800;                 /* Francois One renderiza faux bold; OK */
+  margin:0 0 6px;
+  letter-spacing:.2px;
+  color:#111111;                   /* ← estable */
+}
+
+.tarjeta-producto__price{
+  margin:0;
+  font-size:15px;
+  color:#333333;                   /* ← estable (en vez de opacity) */
+  opacity: .95;
+}
+
+/* (opcional) Ajusta solo la sombra en dark para que “asiente” sobre el fondo gris */
+html[data-theme="dark"] .tarjeta-producto{
+  background:#ffffff;              /* se mantiene blanca */
+  color:#222222;
+  box-shadow: 0 10px 28px rgba(0,0,0,.28), 0 1px 0 rgba(255,255,255,.04) inset;
+  border: 1px solid rgba(0,0,0,.06);
+}

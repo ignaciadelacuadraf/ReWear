@@ -1,0 +1,25 @@
+.donut-root{ display:grid; justify-items:center; gap:16px; }
+.donut-root.is-mounted{ animation: donut-in .35s ease both; }
+@keyframes donut-in{ from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none} }
+
+.donut-wrap{ position:relative; filter: drop-shadow(0 24px 60px rgba(15,23,42,.12)); }
+.donut-svg{ display:block; }
+
+.seg { outline: none; }
+.donut-seg{
+  cursor:pointer;
+  transition: transform .25s ease, filter .25s ease;
+  transform-origin:center;
+}
+.seg:hover .donut-seg{ transform: translateY(-1px) scale(1.035); filter: brightness(1.05) saturate(1.05); }
+.seg.is-active .donut-seg{ transform: translateY(-1px) scale(1.035); filter: drop-shadow(0 10px 26px rgba(15,23,42,.20)); }
+
+.donut-center{
+  stroke: #e6eceb;
+  stroke-width: 2;
+  filter: drop-shadow(0 2px 4px rgba(15,23,42,.08));
+}
+.donut-title{
+  font: 800 clamp(18px, 2.2vw, 28px)/1.2 "Francois One", system-ui, -apple-system, Arial, sans-serif !important;
+  letter-spacing: .3px;
+}

@@ -1,0 +1,34 @@
+.carro, .carro * {
+  box-sizing: border-box;
+  font-family: "Francois One", system-ui, -apple-system, Arial, sans-serif;
+  letter-spacing: 0.2px;
+}
+
+.carro{
+  min-height: 60dvh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: #f7f6f4;
+}
+
+.carro__card{
+  width: min(720px, 92vw);
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  background: white;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+  padding: 22px;
+  text-align: center;
+}
+
+.carro__title{
+  margin: 0 0 8px;
+  font-size: clamp(28px, 3.4vw, 38px);
+}
+
+.carro__desc{
+  margin: 0;
+  opacity: .8;
+  line-height: 1.45;
+}

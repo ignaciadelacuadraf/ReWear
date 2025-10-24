@@ -1,0 +1,62 @@
+.dc-card{
+  /* colores desde JSX: --accent y --panel */
+  background: linear-gradient(180deg,
+              color-mix(in srgb, var(--panel) 92%, white 8%),
+              color-mix(in srgb, var(--panel) 88%, black 2%));
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, #cfd8d6 78%);
+  color: #0f172a;
+  border-radius: 18px;
+  padding: 16px 16px 14px;
+  box-shadow:
+    0 1px 0 rgba(15,23,42,.05),
+    0 18px 40px rgba(15,23,42,.08);
+  min-height: 140px;
+  width: min(430px, 100%);
+  margin-inline: auto;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.dc-card:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 24px 70px rgba(15,23,42,.10);
+  border-color: color-mix(in srgb, var(--accent) 35%, #cfd8d6 65%);
+}
+
+.dc-title{
+  margin: 0 0 10px;
+  font: 900 24px/1.15 "Inter", ui-sans-serif, system-ui;
+  letter-spacing: .2px;
+  position: relative;
+  padding-bottom: 6px;
+  color: #0b1b19;
+}
+.dc-title::after{
+  content:"";
+  position:absolute; left:0; bottom:0; width:84px; height:3px;
+  background: var(--accent);
+  border-radius: 3px;
+  box-shadow: 0 3px 10px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+.dc-body p{ margin: 8px 0; }
+.dc-ol{ margin: 6px 0 0; padding-left: 18px; line-height: 1.6; }
+
+.dc-action{ margin-top: 14px; }
+.dc-action__title{ margin: 0 0 6px; font-size: 13.5px; color: #475569; }
+
+/* CTA principal */
+.dc-cta{
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 10px 14px; border-radius: 12px; text-decoration: none;
+  font: 800 14px/1 "Inter", ui-sans-serif;
+  background: white; color: #0f172a;
+  border: 2px solid var(--accent);
+  transition: background-color .25s ease, transform .15s ease,
+              border-color .25s ease, color .25s ease, box-shadow .2s ease;
+}
+.dc-cta:hover{
+  background: color-mix(in srgb, var(--accent) 38%, black 6%);
+  color: white;
+  border-color: color-mix(in srgb, var(--accent) 65%, black 8%);
+  box-shadow: 0 10px 26px color-mix(in srgb, var(--accent) 28%, transparent);
+  transform: translateY(2px);
+}

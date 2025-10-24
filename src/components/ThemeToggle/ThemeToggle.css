@@ -1,0 +1,60 @@
+/* src/components/ThemeToggle/ThemeToggle.css */
+
+.theme-switch {
+  --w: 68px;
+  --h: 36px;
+  --pad: 4px;
+
+  width: var(--w);
+  height: var(--h);
+  border-radius: 999px;
+  border: 1.5px solid transparent;
+  background: #e9ecef;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: var(--pad);
+  box-shadow: 0 2px 6px rgba(0,0,0,.08);
+}
+
+.theme-switch.is-light {
+  background: #f4f6f8;
+  border-color: #d7dde5;
+}
+
+.theme-switch.is-dark {
+  background: #161822;
+  border-color: #2a2e39;
+  justify-content: flex-end;
+}
+
+/* knob (círculo con icono) */
+.switch-handle {
+  width: calc(var(--h) - var(--pad)*2);
+  height: calc(var(--h) - var(--pad)*2);
+  border-radius: 50%;
+  background: #ffffff;
+  color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 8px rgba(0,0,0,.12);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.theme-switch.is-dark .switch-handle {
+  background: #f1f1f1;
+  color: #111;
+}
+
+.theme-switch:hover {
+  filter: brightness(1.04);
+}
+
+.theme-switch:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(86,182,189,.4);
+}

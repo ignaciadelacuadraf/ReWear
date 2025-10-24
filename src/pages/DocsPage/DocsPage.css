@@ -1,0 +1,170 @@
+/* Francoise + box sizing en toda la vista */
+.docs2, .docs2 * {
+  box-sizing: border-box;
+  font-family: "Francois One", system-ui, -apple-system, Arial, sans-serif;
+  letter-spacing: 0.2px;
+  overflow: hidden; 
+}
+
+/* Grid raíz: 2 columnas. --vp-h = altura fija compartida izquierda/derecha */
+.docs2{
+  --bg: #f6f3ee;
+  --ink: #151a1c;
+  --muted: #5b6a6a;
+  --card: #ffffff;
+  --border: #dcdad6;
+  --shell-pad: 60px;
+
+  display: grid;
+  grid-template-columns: 560px 1fr;
+  gap: 28px;
+
+  /* el body no scrollea; el scroll vive en la derecha */
+  height: calc(var(--vp-h) + (var(--shell-pad) * 2) + 18px);
+  overflow: hidden;
+
+  background: transparent;
+  color: var(--ink);
+  padding: var(--shell-pad) clamp(12px, 3vw, 28px) calc(var(--shell-pad) + 18px);
+}
+
+/* Izquierda: sticky y con altura EXACTA a --vp-h */
+.docs2__aside{
+  position: sticky;
+  top: 0;                 /* alineado con la derecha */
+  height: var(--vp-h);
+}
+.aside__frame{
+  height: var(--vp-h);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: linear-gradient(180deg, #ffffff, #faf9f7);
+  box-shadow: 0 18px 60px rgba(17, 24, 39, 0.08);
+  padding: 16px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 10px;
+}
+.aside__head{
+  --head-h: 120px; /* ajusta según tu copy */
+  min-height: var(--head-h);
+  padding: 2px 8px 0;
+}
+.brand__title{ margin: 0 0 4px; font-size: clamp(26px, 2.6vw, 36px); }
+.brand__lead{ margin: 0; color: var(--muted); line-height: 1.3; font-size: clamp(12px, 1.2vw, 14px); }
+
+/* El donut ocupa el resto del alto del frame */
+.aside__viewport{
+  height: calc(var(--vp-h) - var(--head-h));
+  display: grid;
+  place-items: center;
+}
+
+/* Derecha: viewport scrolleable + snap */
+.docs2__railViewport{
+  height: var(--vp-h);
+  overflow-y: auto;              /* scroll SOLO aquí */
+  overscroll-behavior: contain;
+  border-radius: 24px;
+  scroll-behavior: smooth;
+
+  /* Snap correcto */
+  scroll-snap-type: y proximity;
+  scroll-padding-top: 0;
+
+  /* Scrollbars sutiles */
+  scrollbar-width: thin;
+}
+.docs2__railViewport::-webkit-scrollbar { width: 8px; }
+.docs2__railViewport::-webkit-scrollbar-thumb { background: #c8d4d4; border-radius: 8px; }
+.docs2__railViewport::-webkit-scrollbar-track { background: transparent; }
+
+/* Rail interno (ya sin snap-type) */
+.docs2__rail{
+  display: grid;
+  gap: 28px;
+  padding-right: 6px; /* aire para la barra */
+}
+
+/* Cada tarjeta: misma altura total que la izquierda + ancla el snap */
+.sec{
+  --accent: #1e9e8a;
+  --panel: #eaf6f3;
+
+  height: var(--vp-h);               /* TOTAL = --vp-h (padding incluido) */
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+
+  display: grid;
+  grid-template-rows: auto 1fr;
+  align-content: start;
+
+  border: 1px solid color-mix(in srgb, var(--accent) 20%, var(--border) 80%);
+  background: linear-gradient(180deg,
+             color-mix(in srgb, var(--panel) 95%, white 5%),
+             color-mix(in srgb, var(--panel) 90%, black 4%));
+  border-radius: 24px;
+  padding: 16px 16px 14px;
+  box-shadow: 0 18px 60px rgba(15, 23, 42, 0.08);
+  transition: transform .20s ease, box-shadow .20s ease, border-color .2s ease;
+}
+.sec:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 28px 90px rgba(15,23,42,.10);
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border) 65%);
+}
+
+/* Head de la tarjeta */
+.sec__head{ display: grid; gap: 6px; margin-bottom: 8px; }
+.sec__chip{
+  width: 56px; height: 8px; border-radius: 8px;
+  background: var(--accent);
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--accent) 48%, transparent);
+}
+.sec__title{ margin: 0; font-size: clamp(18px, 2.1vw, 28px); }
+.sec__lead{ margin: 0; color: #425050; font-size: clamp(13px,1.2vw,15px); }
+
+/* Card interior (acordeón + CTA) */
+.sec__card{
+  margin-top: 8px;
+  border: 1px solid color-mix(in srgb, var(--accent) 20%, var(--border) 80%);
+  background: color-mix(in srgb, var(--panel) 85%, white 15%);
+  border-radius: 18px;
+  padding: 12px;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 10px;
+}
+.sec__body p{ margin: 8px 0; }
+.sec__ol{ margin: 8px 0 0; padding-left: 18px; line-height: 1.45; }
+
+/* CTA */
+.sec__cta h3{ margin: 0 0 6px; font-size: 12px; color: #556666; }
+.sec__btn{
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 10px 16px; border-radius: 999px; text-decoration: none;
+  background: white; color: #0f172a; border: 2px solid var(--accent);
+  transition: background-color .25s ease, transform .15s ease, border-color .25s ease, color .25s ease, box-shadow .2s ease;
+}
+.sec__btn:hover{
+  background: color-mix(in srgb, var(--accent) 38%, black 6%);
+  color: white;
+  border-color: color-mix(in srgb, var(--accent) 65%, black 8%);
+  box-shadow: 0 10px 26px color-mix(in srgb, var(--accent) 28%, transparent);
+  transform: translateY(2px);
+}
+
+/* Responsive */
+@media (max-width: 1120px){
+  .docs2{
+    grid-template-columns: 1fr;
+    height: auto;
+    overflow: visible;
+    padding-right: clamp(12px, 3vw, 28px);
+  }
+  .docs2__aside{ position: static; height: auto; }
+  .aside__frame{ height: auto; grid-template-rows: auto auto; }
+  .aside__viewport{ height: min(54vh, var(--vp-h)); }
+  .docs2__railViewport{ height: auto; max-height: none; overflow: visible; scroll-snap-type: none; }
+  .sec{ height: auto; scroll-snap-align: unset; scroll-snap-stop: normal; }
+}

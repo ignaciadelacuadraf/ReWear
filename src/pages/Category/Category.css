@@ -1,0 +1,117 @@
+:root { 
+  --transition: .18s ease;
+  /* si no la tienes ya, puedes declarar (o sobreescribir) el ring aquí */
+  --ring: 0 0 0 3px rgba(58,152,160,.22);
+}
+
+/* contenedor */
+.cat-container{
+  max-width:1280px;
+  margin:0 auto;
+  padding:32px 24px;
+}
+
+/* header */
+.cat-header{
+  margin: 8px 0 18px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 14px;
+}
+
+.cat-title{
+  text-align:center;
+  margin: 0 0 12px;
+  font-size: clamp(24px, 3.4vw, 34px);
+  font-weight: 400;               /* Francois One no tiene 900 */
+  letter-spacing: .3px;
+  color: var(--text);
+  font-family: 'Francois One', sans-serif;
+}
+
+/* toolbar (ordenar izq, conteo der) */
+.cat-toolbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 16px;
+  color: var(--text);
+}
+
+.cat-sort{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:600;
+  color: var(--text);
+}
+
+.cat-sort__label{ 
+  font-size:.95rem; 
+  opacity:.85;               /* equivalente a tu #666, pero tema-aware */
+}
+
+.cat-sort__select{
+  padding:8px 12px;
+  border-radius: 10px;
+  border:1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  font-size:.95rem;
+  cursor:pointer;
+  transition: border-color var(--transition), box-shadow var(--transition), background-color var(--transition), color var(--transition);
+}
+
+.cat-sort__select:focus{
+  outline: none;
+  box-shadow: var(--ring);
+  border-color: var(--primary);
+}
+
+.cat-count{
+  font-weight:700;
+  color: var(--text);
+  opacity:.9;                 /* antes #333 */
+}
+
+/* grid */
+.cat-grid{
+  display:grid;
+  gap:18px;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+}
+@media (min-width: 900px){
+  .cat-grid{ grid-template-columns: repeat(4, minmax(0,1fr)); } /* 4 por fila */
+}
+
+/* estado vacío */
+.cat-empty{ 
+  text-align:center; 
+  margin:34px 0; 
+  color: var(--text);
+  opacity:.85;               /* antes #444 */
+}
+
+/* botón secundario */
+.cat-btn{
+  display:inline-block; 
+  margin-top:12px; 
+  padding:10px 14px; 
+  border-radius:10px;
+  border:1px solid var(--primary); 
+  color: var(--primary); 
+  background: transparent;
+  text-decoration:none; 
+  font-weight:700;
+  transition: background-color var(--transition), color var(--transition), border-color var(--transition), transform .06s ease-in;
+}
+.cat-btn:hover{ 
+  background: rgba(58,152,160,.10);   /* usa tu primary con alfa */
+}
+.cat-btn:active{
+  transform: scale(.98);
+}
+.cat-btn:focus-visible{
+  outline: none;
+  box-shadow: var(--ring);
+  border-color: var(--primary);
+}

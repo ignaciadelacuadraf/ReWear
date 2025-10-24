@@ -1,0 +1,112 @@
+:root{
+  --footer-bg: #6d6d6d;
+  --footer-fg: #ffffff;
+  --footer-fg-dim: rgba(255,255,255,.9);
+  --vline: rgba(255,255,255,.45);
+  --maxw: 1480px;
+  --side-pad: 48px;
+}
+
+.footer{
+  background: var(--footer-bg);
+  color: var(--footer-fg);
+  font-family: "Francois One", sans-serif;
+  margin-top: 80px;
+}
+
+/* ======= contenedor ======= */
+.footer__wrap{
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 48px var(--side-pad);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  text-align: center;
+  align-items: stretch; /* asegura misma altura */
+  position: relative;
+}
+
+/* ======= columnas ======= */
+.footer__col{
+  padding: 0 36px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* líneas verticales iguales */
+.footer__col:not(:last-child)::after{
+  content: "";
+  position: absolute;
+  top: 10%;
+  right: 0;
+  bottom: 10%;
+  width: 1.5px;
+  background: var(--vline);
+}
+
+/* ======= títulos ======= */
+.footer__title{
+  margin: 0 0 14px;
+  font-weight: 700; /* negrita */
+  font-size: clamp(18px, 2vw, 22px);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: var(--footer-fg);
+}
+
+/* ======= contenido ======= */
+.footer__list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  display: grid;
+  gap: 10px;
+  color: var(--footer-fg-dim);
+  font-size: clamp(14px, 1.3vw, 16px);
+  line-height: 1.6;
+}
+
+/* texto normal + itálica */
+.footer__info em {
+  font-style: italic;
+  font-weight: 400;
+  display: inline-block;
+  margin-top: 2px;
+}
+
+/* tiendas */
+.footer__store {
+  margin-bottom: 12px;
+}
+
+/* enlaces */
+.footer__list a{
+  color: var(--footer-fg);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity .2s ease;
+}
+.footer__list a:hover{ opacity: .9; }
+
+/* ======= parte inferior ======= */
+.footer__bottom{
+  border-top: 1px solid rgba(255,255,255,.28);
+  margin-top: 24px;
+  padding: 14px 16px 18px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--footer-fg-dim);
+}
+
+/* ======= responsive ======= */
+@media (max-width: 900px){
+  .footer__wrap{
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .footer__col:not(:last-child)::after{ display: none; }
+}
