@@ -1,19 +1,20 @@
 // src/app/router.jsx
 import { createBrowserRouter, Navigate } from "react-router-dom";
 
-import RootLayout    from "../layouts/RootLayout";
-import Home          from "../pages/Home/Home";
-import CategoryPage  from "../pages/Category/Category";
+import RootLayout from "../layouts/RootLayout";
+import Home from "../pages/Home/Home";
+import CategoryPage from "../pages/Category/Category";
 import SearchResults from "../pages/Search/Search";
 
-import Login    from "../pages/UserAuth/Login.jsx";
+import Login from "../pages/UserAuth/Login.jsx";
 import Register from "../pages/UserAuth/Register.jsx";
 
 import DocsPage from "../pages/DocsPage/DocsPage";
+import AboutUs from "../pages/AboutUs/AboutUs"; // <-- LÍNEA NUEVA
 
 // NUEVOS
-import Carro     from "../pages/Carro/Carro";
-import MiCuenta  from "../pages/MiCuenta/MiCuenta";
+import Carro from "../pages/Carro/Carro";
+import MiCuenta from "../pages/MiCuenta/MiCuenta";
 
 import ProtectedRoute from "./auth/ProtectedRoute";
 
@@ -23,6 +24,7 @@ export const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       { path: "/docs", element: <DocsPage /> },
+      { path: "/nosotras", element: <AboutUs /> }, // <-- LÍNEA NUEVA
       { path: "/products", element: <SearchResults /> },
       { path: "/:gender/:category", element: <CategoryPage /> },
 
